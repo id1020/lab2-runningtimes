@@ -17,8 +17,12 @@
  */
 package se.kth.id1020;
 
+import com.google.common.collect.Sets;
+import com.google.common.primitives.Ints;
 import edu.princeton.cs.algs4.Stopwatch;
 import edu.princeton.cs.introcs.StdRandom;
+
+import java.util.Set;
 
 public class DoublingRatio {
 
@@ -27,13 +31,13 @@ public class DoublingRatio {
   }
 
   private static double timeTrial(int N, SumHandler handler) {
-    int MAX = 1000000;
-    int[] a = new int[N];
-    for (int i = 0; i < N; i++) {
-      a[i] = StdRandom.uniform(-MAX, MAX);
+    int MAX = 10000000;
+    Set<Integer> numbers = Sets.newHashSetWithExpectedSize(N);
+    while (numbers.size() < N){
+      numbers.add(StdRandom.uniform(-MAX, MAX));
     }
     Stopwatch timer = new Stopwatch();
-    int cnt = handler.count(a);
+    int cnt = handler.count(Ints.toArray(numbers));
     return timer.elapsedTime();
   }
 

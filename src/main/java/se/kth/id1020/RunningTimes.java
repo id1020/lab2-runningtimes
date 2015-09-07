@@ -26,8 +26,8 @@ public class RunningTimes {
       System.out.println("Operation could be 2sum, 2sumfast, 3sum, 3sumfast");
       System.exit(-1);
     }
-    String operation = args[1];
-    int N = Integer.valueOf(args[2]);
+    String operation = args[0];
+    int N = Integer.valueOf(args[1]);
     double time = 0;
     if(operation.equals("2sum")){
       time = DoublingRatio.timeTrialTwoSum(N);
@@ -44,7 +44,6 @@ public class RunningTimes {
       System.exit(-1);
     }
 
-    System.out.println("Time taken for " + operation + " for input " + N + ":" +
-        time + " seconds");
+    System.out.println(N + " " + time);
   }
 }
